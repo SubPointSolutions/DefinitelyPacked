@@ -7,3 +7,6 @@ build_script:
 
 artifacts:
     - path: '**\packages\*.nupkg'
+
+install:
+    - cmd: nuget sources add -Name "SubPointSolutions-Staging" -Source "https://www.myget.org/F/subpointsolutions-staging/api/v2"

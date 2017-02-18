@@ -1,0 +1,27 @@
+﻿{
+    "defaultSolutionDirectory" : "./../",
+    "defaultSolutionFilePath" : "./../DefinitelyPacked.sln",
+
+    "defaultProjectFilePaths" : [
+        
+    ],
+    
+    "defaultNuGetPackagesDirectory" : "./packages",
+    "defaultNuspecVersion" : "1.2.100.0",
+
+    "defaultTestCategories": [
+        "DefinitelyPacked.Core"
+    ],
+
+    "defaultTestAssemblyPaths": [
+       "./../DefinitelyPacked.Tests/bin/debug/DefinitelyPacked.Tests.dll"
+    ],
+
+    "defaultBuildDirs": [
+        "./../DefinitelyPacked.Tests/bin"
+    ],
+
+    "defaultEnvironmentVariables" : [
+
+    ]
+}

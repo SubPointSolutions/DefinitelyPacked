@@ -6,7 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_3rdparty", "_3rdparty", "{5CCA6A50-E9F4-441D-983B-DA877B69C493}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
-		readme.md = readme.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "Build\Build.csproj", "{A616BDC4-DE01-43BE-85AD-540AE5DC048B}"

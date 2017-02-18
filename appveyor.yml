@@ -8,7 +8,5 @@ build_script:
 artifacts:
     - path: '**\packages\*.nupkg'
 
-nuget:
-  account_feed: true
-  project_feed: true
-  disable_publish_on_pr: false
+install:
+	- cmd: nuget sources add -Name SubPointSolutions-Staging -Source https://www.myget.org/F/subpointsolutions-staging/api/v2

@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_3rdparty", "_3rdparty", "{5CCA6A50-E9F4-441D-983B-DA877B69C493}"
+	ProjectSection(SolutionItems) = preProject
+		appveyor.yml = appveyor.yml
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "Build\Build.csproj", "{A616BDC4-DE01-43BE-85AD-540AE5DC048B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefinitelyPacked.ArvoSys", "DefinitelyPacked.ArvoSys\DefinitelyPacked.ArvoSys.csproj", "{C78CA8BD-7F43-4D29-9181-58869496DCD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefinitelyPacked.jQuery", "DefinitelyPacked.jQuery\DefinitelyPacked.jQuery.csproj", "{21D196FA-965B-4D5E-8065-4833011741B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefinitelyPacked.Tests", "DefinitelyPacked.Tests\DefinitelyPacked.Tests.csproj", "{86036D91-5123-4442-90FD-5C4C848D16E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{96C466A8-FF00-4B97-BE61-988CCB6EF25F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E2F4007E-681B-417F-9745-0632BC6F77D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{6AEBB54A-7C03-4B6C-B464-CCCE2F06A87A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A616BDC4-DE01-43BE-85AD-540AE5DC048B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A616BDC4-DE01-43BE-85AD-540AE5DC048B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A616BDC4-DE01-43BE-85AD-540AE5DC048B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A616BDC4-DE01-43BE-85AD-540AE5DC048B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C78CA8BD-7F43-4D29-9181-58869496DCD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C78CA8BD-7F43-4D29-9181-58869496DCD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C78CA8BD-7F43-4D29-9181-58869496DCD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C78CA8BD-7F43-4D29-9181-58869496DCD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21D196FA-965B-4D5E-8065-4833011741B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21D196FA-965B-4D5E-8065-4833011741B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21D196FA-965B-4D5E-8065-4833011741B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21D196FA-965B-4D5E-8065-4833011741B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86036D91-5123-4442-90FD-5C4C848D16E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86036D91-5123-4442-90FD-5C4C848D16E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86036D91-5123-4442-90FD-5C4C848D16E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86036D91-5123-4442-90FD-5C4C848D16E5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A616BDC4-DE01-43BE-85AD-540AE5DC048B} = {5CCA6A50-E9F4-441D-983B-DA877B69C493}
+		{C78CA8BD-7F43-4D29-9181-58869496DCD2} = {96C466A8-FF00-4B97-BE61-988CCB6EF25F}
+		{21D196FA-965B-4D5E-8065-4833011741B6} = {96C466A8-FF00-4B97-BE61-988CCB6EF25F}
+		{86036D91-5123-4442-90FD-5C4C848D16E5} = {E2F4007E-681B-417F-9745-0632BC6F77D6}
+	EndGlobalSection
+EndGlobal

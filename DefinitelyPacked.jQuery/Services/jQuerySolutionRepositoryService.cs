@@ -40,7 +40,7 @@ namespace DefinitelyPacked.jQuery.Services
             {
                 var jQueryVersion = Path.GetFileName(versionFolderPath);
 
-                var folderName = Path.GetDirectoryName(versionFolderPath);
+                var versionFolderName = (new DirectoryInfo(versionFolderPath)).Name; 
                 var filePaths = Directory.GetFiles(versionFolderPath, "*.*");
 
                 // create model
@@ -48,16 +48,19 @@ namespace DefinitelyPacked.jQuery.Services
                 {
                     web.AddHostList(BuiltInListDefinitions.StyleLibrary, list =>
                     {
-                        list.AddFolder(new FolderDefinition { Name = folderName }, folder =>
+                        list.AddFolder(new FolderDefinition { Name = "jQuery" }, jQueryFolder =>
                         {
-                            foreach (var filePath in filePaths)
+                            jQueryFolder.AddFolder(new FolderDefinition { Name = versionFolderName }, folder =>
                             {
-                                folder.AddModuleFile(new ModuleFileDefinition
+                                foreach (var filePath in filePaths)
                                 {
-                                    FileName = Path.GetFileName(filePath),
-                                    Content = File.ReadAllBytes(filePath)
-                                });
-                            }
+                                    folder.AddModuleFile(new ModuleFileDefinition
+                                    {
+                                        FileName = Path.GetFileName(filePath),
+                                        Content = File.ReadAllBytes(filePath)
+                                    });
+                                }
+                            });
                         });
                     });
                 });

@@ -79,17 +79,31 @@ namespace DefinitelyPacked.Tests.Scenarios
         {
             var packagesListString = new StringBuilder();
 
-            foreach (var packageKey in packages.GroupBy(p => p.Id))
+            packagesListString.AppendFormat("| Package |  Description | {0}", Environment.NewLine);
+            packagesListString.AppendFormat("| ------------- |  ------------- |{0}", Environment.NewLine);
+
+            foreach (var packageKey in packages.OrderBy(p => p.Id).GroupBy(p => p.Id))
             {
                 var packageId = packageKey.Key;
 
-                packagesListString.AppendFormat("{0}{1}", packageId, Environment.NewLine);
+                //packagesListString.AppendFormat("{0}{1}", packageId, Environment.NewLine);
+
+                //foreach (var package in packageKey.OrderByDescending(p => p.Version))
+                //    packagesListString.AppendFormat("* {0}{1}", package.Version, Environment.NewLine);
+
+                //packagesListString.AppendFormat("{0}",Environment.NewLine);
+                //packagesListString.AppendFormat("{0}", Environment.NewLine);
 
                 foreach (var package in packageKey.OrderByDescending(p => p.Version))
-                    packagesListString.AppendFormat("* {0}{1}", package.Version, Environment.NewLine);
+                {
+                    packagesListString.AppendFormat("| {0} | {1} |{2}",
+                                                     string.Format("[{0}]({1})", package.Id, package.ProjectUrl),
+                                                     //package.Version,
+                                                     package.Description,
+                                                     Environment.NewLine);
 
-                packagesListString.AppendFormat("{0}",Environment.NewLine);
-                packagesListString.AppendFormat("{0}", Environment.NewLine);
+                    break;
+                }
             }
 
             var fileContent = File.ReadAllText(ReadmeTemplateFilePath);

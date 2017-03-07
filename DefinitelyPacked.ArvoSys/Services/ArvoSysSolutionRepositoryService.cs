@@ -39,6 +39,7 @@ namespace DefinitelyPacked.ArvoSys.Services
                 package.Name = "spf-imagefield";
                 package.Title = "spf-imagefield";
 
+                package.Description = "SharePoint Flow Image Field";
                 package.ProjectUrl = "https://github.com/sergeisnitko/spf-imagefield";
 
             }));
@@ -53,6 +54,7 @@ namespace DefinitelyPacked.ArvoSys.Services
                 package.Name = "spf-fieldsettings";
                 package.Title = "spf-fieldsettings";
 
+                package.Description = "Enables management of advances field properties such as JSLink and others";
                 package.ProjectUrl = "https://github.com/sergeisnitko/spf-fieldsettings";
             }));
 
@@ -66,6 +68,7 @@ namespace DefinitelyPacked.ArvoSys.Services
                 package.Name = "spf-newitemcallout";
                 package.Title = "spf-newitemcallout";
 
+                package.Description = "SharePoint custom callout for new item hero button";
                 package.ProjectUrl = "https://github.com/sergeisnitko/spf-newitemcallout";
             }));
 

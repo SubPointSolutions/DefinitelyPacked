@@ -36,17 +36,14 @@
       <HintPath>..\packages\AppDomainToolkit.1.0.4.3\lib\net\AppDomainToolkit.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MetaPack.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetaPack.Core.1.2.100-alpha170491442\lib\net45\MetaPack.Core.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MetaPack.Core">
+      <HintPath>..\packages\MetaPack.Core.0.1.0-beta2\lib\net45\MetaPack.Core.dll</HintPath>
     </Reference>
-    <Reference Include="MetaPack.NuGet, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetaPack.NuGet.1.2.100-alpha170491442\lib\net45\MetaPack.NuGet.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MetaPack.NuGet">
+      <HintPath>..\packages\MetaPack.NuGet.0.1.0-beta2\lib\net45\MetaPack.NuGet.dll</HintPath>
     </Reference>
-    <Reference Include="MetaPack.SPMeta2, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetaPack.SPMeta2.1.2.100-alpha170491442\lib\net45\MetaPack.SPMeta2.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="MetaPack.SPMeta2">
+      <HintPath>..\packages\MetaPack.SPMeta2.0.1.0-beta2\lib\net45\MetaPack.SPMeta2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>

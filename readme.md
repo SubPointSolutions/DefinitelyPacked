@@ -43,9 +43,7 @@ DefinitelyTyped is in beta testing. All packages are available only appveyor bui
 The foolowing packages are implemented:
 
 DefinitelyPacked.jQuery
-* 3.1.1
-* 2.2.4
-* 1.12.4
+* 0.1.0-beta1
 
 
 DefinitelyPacked.ArvoSys.spf-imagefield

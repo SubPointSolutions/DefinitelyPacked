@@ -18,21 +18,21 @@ Once you've for your solution in NuGet Gallery, you can deploy it with metapack 
 
 Deployment to SharePoint Online (Office365) looks as following:
 
-``
+```ps
 metapack install --id 'your-solution-id' 
                  --url 'http://contoso.sharepoint.com' 
                  --username 'user@contoso.com' 
                  --userpassword 'pass@word' 
                  --spversion o365
-``
+```
 
 SharePoint 2013 deployment can be done as foolowing:
 
-``
+```ps
 metapack install --id 'your-solution-id' 
                  --url 'http://contoso.sharepoint.com' 
                  --spversion sp2013
-``
+```
 
 
 ### Available packages

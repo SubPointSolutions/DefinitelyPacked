@@ -1,5 +1,5 @@
-# DefinitelyTyped (beta)
-DefinitelyTyped is a repository for common, community-driven [MetaPack](https://github.com/SubPointSolutions/MetaPack) packages. We are aiming to bring together high-quality packages to help SharePoint professionals and develop and deliver solutions for SharePoint - both on-premises and SharePoint online.
+# DefinitelyPacked (beta)
+DefinitelyPacked is a repository for common, community-driven [MetaPack](https://github.com/SubPointSolutions/MetaPack) packages. We are aiming to bring together high-quality packages to help SharePoint professionals and develop and deliver solutions for SharePoint - both on-premises and SharePoint online.
 
 ### Build status
 | Branch  | Status |
@@ -63,7 +63,7 @@ More options for deployments via MetaPack CLI are available here:
 * [MetaPack API](http://docs.subpointsolutions.com/metapack/getting-started)
 
 ### Available packages
-DefinitelyTyped is in beta testing. All packages are available only AppVeyor build:
+DefinitelyPacked is in beta testing. All packages are available only AppVeyor build:
 * Build artifacts: [https://ci.appveyor.com/project/SubPointSupport/definitelypacked/build/artifacts](https://ci.appveyor.com/project/SubPointSupport/definitelypacked/build/artifacts)
 * Build NuGet feed: [https://ci.appveyor.com/nuget/definitelypacked-nuget](https://ci.appveyor.com/nuget/definitelypacked-nuget)
 
@@ -79,7 +79,7 @@ The foolowing packages are implemented:
 
 ### Feature requests, support and contributions
 
-DefinitelyTyped is a part of the SPMeta2 ecosystem. In case you have unexpected issues or keen to see new features please contact support on SPMeta2 Yammer or here at github:
+DefinitelyPacked is a part of the SPMeta2 ecosystem. In case you have unexpected issues or keen to see new features please contact support on SPMeta2 Yammer or here at github:
 
 * https://www.yammer.com/spmeta2feedback
 * https://github.com/SubPointSolutions/DefinitelyPacked

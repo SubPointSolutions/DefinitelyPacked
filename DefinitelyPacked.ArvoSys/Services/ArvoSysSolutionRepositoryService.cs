@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using DefinitelyPacked.ArvoSys.Models;
+using MetaPack.Core.Common;
 using MetaPack.Core.Packaging;
 using MetaPack.Core.Services;
 using MetaPack.SPMeta2;
@@ -37,6 +39,7 @@ namespace DefinitelyPacked.ArvoSys.Services
                 package.Name = "spf-imagefield";
                 package.Title = "spf-imagefield";
 
+                package.Description = "SharePoint Flow Image Field";
                 package.ProjectUrl = "https://github.com/sergeisnitko/spf-imagefield";
 
             }));
@@ -51,6 +54,7 @@ namespace DefinitelyPacked.ArvoSys.Services
                 package.Name = "spf-fieldsettings";
                 package.Title = "spf-fieldsettings";
 
+                package.Description = "Enables management of advances field properties such as JSLink and others";
                 package.ProjectUrl = "https://github.com/sergeisnitko/spf-fieldsettings";
             }));
 
@@ -64,6 +68,7 @@ namespace DefinitelyPacked.ArvoSys.Services
                 package.Name = "spf-newitemcallout";
                 package.Title = "spf-newitemcallout";
 
+                package.Description = "SharePoint custom callout for new item hero button";
                 package.ProjectUrl = "https://github.com/sergeisnitko/spf-newitemcallout";
             }));
 
@@ -73,13 +78,7 @@ namespace DefinitelyPacked.ArvoSys.Services
         protected virtual Stream CreateSPFFieldSettingsPackage(ModelNode model, Action<SolutionPackageBase> action)
         {
             // save solution to XML file
-            var modelXml = SPMeta2Model.ToXML(model);
-
-            var tmpFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
-            Directory.CreateDirectory(tmpFolder);
-
-            var modelFilePath = Path.Combine(tmpFolder, "model.xml");
-            File.WriteAllText(modelFilePath, modelXml);
+            var xmlContext = SPMeta2Model.ToXML(model);
 
             // pack model
             var solutionPackage = GetSolutionPackageTemplate();
@@ -87,7 +86,13 @@ namespace DefinitelyPacked.ArvoSys.Services
             // update version and add model
             action(solutionPackage);
 
-            solutionPackage.ModelFolders.Add(Path.GetDirectoryName(modelFilePath));
+            // create ModelContainerBase, put serialized model there
+            var modelContainer = new ModelContainerBase
+            {
+                Model = Encoding.UTF8.GetBytes(xmlContext),
+            };
+
+            solutionPackage.AddModel(modelContainer);
 
             // pack to NuGet package
             var packageService = new SPMeta2SolutionPackageService();
@@ -96,9 +101,9 @@ namespace DefinitelyPacked.ArvoSys.Services
             return solutionPackageStream;
         }
 
-        protected virtual SPMeta2SolutionPackage GetSolutionPackageTemplate()
+        protected virtual SolutionPackageBase GetSolutionPackageTemplate()
         {
-            var solutionPackage = new SPMeta2SolutionPackage();
+            var solutionPackage = new SolutionPackageBase();
 
             solutionPackage.Description = "SharePoint Flow Image Field. The SharePoint CSR UI control for working with pictures/images in field (upload, select from library)";
 
@@ -115,6 +120,13 @@ namespace DefinitelyPacked.ArvoSys.Services
 
             solutionPackage.Copyright = string.Empty;
             solutionPackage.Tags = "SharePoint SP2013 Foundation Standard Enterprise SPO SharePointOnline O365 Office365 Office365Dev Provision SPMeta2 ARVO SPF SPFlow JavaScript CSR Client-Side Rendering";
+
+            // flag a provider which will be used for solution package deployment
+            solutionPackage.AdditionalOptions.Add(new OptionValue
+            {
+                Name = DefaultOptions.SolutionToolPackage.PackageId.Id,
+                Value = "MetaPack.SPMeta2"
+            });
 
             return solutionPackage;
         }

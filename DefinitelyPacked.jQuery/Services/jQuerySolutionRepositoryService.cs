@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MetaPack.Core.Common;
+using MetaPack.Core.Packaging;
 using MetaPack.Core.Services;
 using MetaPack.SPMeta2;
 using MetaPack.SPMeta2.Services;
@@ -28,6 +30,12 @@ namespace DefinitelyPacked.jQuery.Services
         {
             var result = new List<Stream>();
 
+            // pack model
+            var solutionPackage = GetSolutionPackageTemplate();
+
+            // update version and add model
+            solutionPackage.Version = "0.1.0-beta1";
+
             var assemblyDirectoryPath = Path.GetDirectoryName(GetType().Assembly.Location);
             var jQueryDirectoryPath = Path.Combine(assemblyDirectoryPath, "jQuery");
 
@@ -40,7 +48,7 @@ namespace DefinitelyPacked.jQuery.Services
             {
                 var jQueryVersion = Path.GetFileName(versionFolderPath);
 
-                var versionFolderName = (new DirectoryInfo(versionFolderPath)).Name; 
+                var versionFolderName = (new DirectoryInfo(versionFolderPath)).Name;
                 var filePaths = Directory.GetFiles(versionFolderPath, "*.*");
 
                 // create model
@@ -66,35 +74,38 @@ namespace DefinitelyPacked.jQuery.Services
                 });
 
                 // save solution to XML file
-                var modelXml = SPMeta2Model.ToXML(webModel);
+                var xmlContext = SPMeta2Model.ToXML(webModel);
 
-                var tmpFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString("N"));
-                Directory.CreateDirectory(tmpFolder);
 
-                var modelFilePath = Path.Combine(tmpFolder, "WebModel.jQuery.xml");
-                File.WriteAllText(modelFilePath, modelXml);
 
-                // pack model
-                var solutionPackage = GetSolutionPackageTemplate();
+                // create ModelContainerBase, put serialized model there
+                var modelContainer = new ModelContainerBase
+                {
+                    Model = Encoding.UTF8.GetBytes(xmlContext),
+                };
 
-                // update version and add model
-                solutionPackage.Version = jQueryVersion;
-                solutionPackage.ModelFolders.Add(Path.GetDirectoryName(modelFilePath));
+                modelContainer.AdditionalOptions.Add(new OptionValue
+                {
+                    Name = "_metapack.model.id",
+                    Value = string.Format("jQuery.{0}", jQueryVersion)
+                });
 
-                // pack to NuGet package
-                var packageService = new SPMeta2SolutionPackageService();
-                var solutionPackageStream = packageService.Pack(solutionPackage);
-
-                // add to result strems
-                result.Add(solutionPackageStream);
+                solutionPackage.AddModel(modelContainer);
             }
+
+            // pack to NuGet package
+            var packageService = new SPMeta2SolutionPackageService();
+            var solutionPackageStream = packageService.Pack(solutionPackage);
+
+            // add to result strems
+            result.Add(solutionPackageStream);
 
             return result;
         }
 
-        private static SPMeta2SolutionPackage GetSolutionPackageTemplate()
+        private static SolutionPackageBase GetSolutionPackageTemplate()
         {
-            var solutionPackage = new SPMeta2SolutionPackage();
+            var solutionPackage = new SolutionPackageBase();
 
             solutionPackage.Name = "DefinitelyPacked.jQuery";
             solutionPackage.Title = "DefinitelyPacked.jQuery";
@@ -115,7 +126,12 @@ namespace DefinitelyPacked.jQuery.Services
             solutionPackage.Copyright = string.Empty;
             solutionPackage.Tags = "jQuery SPMeta2 MetaPack DefinitelyPacked SharePoint Office365 Office365Dev SharePointOnline";
 
-
+            // flag a provider which will be used for solution package deployment
+            solutionPackage.AdditionalOptions.Add(new OptionValue
+            {
+                Name = DefaultOptions.SolutionToolPackage.PackageId.Id,
+                Value = "MetaPack.SPMeta2"
+            });
 
             return solutionPackage;
         }
